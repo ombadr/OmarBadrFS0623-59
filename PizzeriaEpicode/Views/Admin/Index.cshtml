@@ -1,0 +1,31 @@
+﻿@model List<PizzeriaEpicode.Models.Order>
+@{
+    ViewBag.Title = "Unfulfilled Orders";
+}
+
+<h2>Unfulfilled Orders</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Order ID</th>
+            <th>User ID</th>
+            <th>Shipping Address</th>
+            <th>Notes</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var order in Model)
+            {
+                <tr>
+                    <td>@order.Id</td>
+                    <td>@order.UserId</td>
+                    <td>@order.ShippingAddress</td>
+                    <td>@order.Notes</td>
+                    <td>@Html.ActionLink("Fulfill", "FulfillOrder", new {id = order.Id}, new {@class="btn btn-success"})</td>
+
+                </tr>
+            }
+    </tbody>
+</table>

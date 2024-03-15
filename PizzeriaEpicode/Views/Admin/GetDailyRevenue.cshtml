@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "Daily Revenue";
+}
+
+<h2>Daily Revenue</h2>
+
+@using (Html.BeginForm("DailyRevenue", "Admin", FormMethod.Get))
+{
+    <div class="form-group">
+        <label for="date">Select Date</label>
+        <input type="date" id="date" name="date" class="form-control" required />
+    </div>
+
+    <button type="submit" class="btn btn-success my-3">Show Revenue</button>
+}
+
+

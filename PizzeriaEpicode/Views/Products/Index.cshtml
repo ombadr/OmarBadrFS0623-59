@@ -1,0 +1,27 @@
+﻿@model IEnumerable<PizzeriaEpicode.Models.Product>
+@{
+    ViewBag.Title = "Our Products";
+}
+
+<h2>Our Products</h2>
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-3">
+
+            <div class="card" >
+                <img src="@item.PhotoURL" class="card-img-top" alt="@item.Name">
+                <div class="card-body">
+                    <h5 class="card-title">@item.Name</h5>
+                    <p class="card-text"><strong>Price:</strong> @item.Price</p>
+                    <p class="card-text"><strong>Delivery Time:</strong> @item.DeliveryTime</p>
+                    @Html.ActionLink("Order Now", "Details", "Products", new {id = item.Id}, new {@class="btn btn-success"})
+                </div>
+            </div>
+            </div>
+        }
+    </div>
+</div>
+

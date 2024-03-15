@@ -1,0 +1,39 @@
+﻿@model PizzeriaEpicode.Models.Product
+@{
+    ViewBag.Title = "Add New Product";
+}
+
+<h2>Add New Product</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Name)
+        @Html.TextBoxFor(m => m.Name, new {@class="form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.PhotoURL, "Image Url")
+        @Html.TextBoxFor(m => m.PhotoURL, new  {@class="form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Price)
+        @Html.TextBoxFor(m => m.Price, new {@class="form-control"})
+
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.DeliveryTime, "Delvery Time (minutes)")
+        @Html.TextBoxFor(m => m.DeliveryTime, new {@class ="form-control"})
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Ingredients)
+        @Html.TextAreaFor(m => m.Ingredients, new {@class="form-control"})
+    </div>
+
+    <button type="submit" class="btn btn-success my-3">Create</button>
+}

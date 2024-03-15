@@ -1,0 +1,49 @@
+﻿@model PizzeriaEpicode.Models.Product
+
+@{
+    ViewBag.Title = "Product Details";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <h3>Product Name: @Model.Name</h3>
+            <div>
+                <strong>Price:</strong> @Model.Price.ToString("C")
+            </div>
+            <div>
+                <strong>Ingredients:</strong> @Model.Ingredients
+            </div>
+            <div>
+                <strong>Delivery Time:</strong> @Model.DeliveryTime
+            </div>
+        </div>
+        <div class="col-6">
+            @if (!string.IsNullOrEmpty(Model.PhotoURL))
+            {
+                <div>
+                    <img src="@Model.PhotoURL" alt="@Model.Name" style="max-width: 100%; height: auto;" />
+                </div>
+            }
+        </div>
+    </div>
+    
+
+   
+
+    <div>
+        <h4>Add to Cart</h4>
+        @using (Html.BeginForm("AddToCart", "Products", FormMethod.Post))
+        {
+            <input type="hidden" name="productId" value="@Model.Id" />
+            <label for="quantity"><strong>Quantity:</strong></label>
+            <input type="number" name="quantity" value="1" min="1" style="width: 60px;" />
+            <input type="submit" value="Add to Cart" class="btn btn-success" />
+        }
+    </div>
+</div>
+
+<p class="my-3">
+    @Html.ActionLink("Back to List", "Index")
+</p>
